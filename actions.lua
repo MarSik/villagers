@@ -11,7 +11,7 @@ function targetClear(self)
 	local nodenames
 
 	--check vertical pos at villager's lowerbody
-	nodenames = villagers.getNodeName({x=pos.x, y=pos.y, z=pos.z})
+	nodenames = villagers.getNodeName({x=pos.x, y=pos.y+1, z=pos.z})
 	if villagers.log then io.write("\n  - "..nodenames[2]) end
 	if minetest.registered_nodes[nodenames[1]].walkable then
 		if villagers.log then io.write("[fail] ") end
@@ -21,7 +21,7 @@ function targetClear(self)
 	end
 	
 	--check vertical pos at villager's upperbody
-	nodenames = villagers.getNodeName({x=pos.x, y=pos.y+1, z=pos.z})
+	nodenames = villagers.getNodeName({x=pos.x, y=pos.y+2, z=pos.z})
 	if villagers.log then io.write(nodenames[2]) end
 	if minetest.registered_nodes[nodenames[1]].walkable then
 		if villagers.log then io.write("[fail] ") end
@@ -31,7 +31,7 @@ function targetClear(self)
 	end
 	
 	--check vertical pos below villager's feet
-	nodenames = villagers.getNodeName({x=pos.x, y=pos.y-1, z=pos.z})
+	nodenames = villagers.getNodeName({x=pos.x, y=pos.y, z=pos.z})
 	local nodename = nodenames[2]
 	if villagers.log then io.write(nodenames[2]) end
 	if string.find(nodename, "WATER") or string.find(nodename, "LAVA") or string.find(nodename, "AIR") then
@@ -434,7 +434,7 @@ local function randomAct(self)
 		if log then io.write(tNodeDrawtype.." "..tNodeNickname.." plot="..self.vType.." ") end
 		
 		-- air, ladders/signs, and torches
-		if tNodeDrawtype == "airlike" or tNodeDrawtype == "signlike" or tNodeDrawtype == "torchlike" then
+		if tNodeDrawtype == "normal" or tNodeDrawtype == "airlike" or tNodeDrawtype == "signlike" or tNodeDrawtype == "torchlike" then
 			-- villager can walk further distance from origin
 			if self.vOriginDistance < self.vOriginDistMax then 
 				local random_num = math.random(5)
