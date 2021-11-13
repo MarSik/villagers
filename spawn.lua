@@ -387,7 +387,7 @@ minetest.register_lbm({
 		-- set final position that takes into account calc'd 
 		-- collision_box that was based on dynamic visual_size
 		final_pos.y = final_pos.y
-		objectRef:setpos(final_pos)
+		objectRef:set_pos(final_pos)
 		self.vPos = 		{x=final_pos.x,y=final_pos.y,z=final_pos.z}
 		self.vOriginPos = 	{x=final_pos.x,y=final_pos.y,z=final_pos.z}
 		self.vTargetPos = 	{x=final_pos.x, y=self.vTargetHeight, z=final_pos.z}
@@ -651,7 +651,7 @@ minetest.register_entity("villagers:villager", {
 			self.object:set_properties({collisionbox=data.vBox})
 			self.object:set_properties({infotext=data.vInfo})
 			self.object:set_properties({hp_max=data.vHP})
-			self.object:setpos(data.vPos)
+			self.object:set_pos(data.vPos)
 			self.object:set_yaw(data.vYaw)
 			
 			self.vName = data.vName
@@ -752,7 +752,7 @@ minetest.register_entity("villagers:villager", {
 				if log then io.write("loaded="..prior_saved_action.." ") end
 				if log then io.write("set_vAction=WALK ") end
 				self.vAction = "WALK"
-				self.object:setvelocity({x=0,y=0,z=0})
+				self.object:set_velocity({x=0,y=0,z=0})
 			elseif prior_saved_action == "TURNBACK" then
 				if log then io.write("loaded="..prior_saved_action.." ") end
 			elseif prior_saved_action == "WALKBACK" then

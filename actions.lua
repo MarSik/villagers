@@ -154,7 +154,7 @@ local function walkVillagerEnd(self)
 	
 	-- stop villager and show standing anim. villager should
 	-- now be standing at or near the target position
-	self.object:setvelocity({x=0,y=0,z=0})
+	self.object:set_velocity({x=0,y=0,z=0})
 	self.object:set_animation(
 		{x=self.animation["stand_start"], y=self.animation["stand_end"]},
 		self.animation_speed + math.random(10)
@@ -196,7 +196,7 @@ local function walkVillager(self)
 	local z_velocity = villagers.NODE_AREA[facing][2]
 
 	--move villager in the direction of target position
-	self.object:setvelocity({x=x_velocity,y=0,z=z_velocity})
+	self.object:set_velocity({x=x_velocity,y=0,z=z_velocity})
 
 	--show walking animation
 	self.object:set_animation(
